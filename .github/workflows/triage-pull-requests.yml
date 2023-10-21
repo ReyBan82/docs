@@ -27,3 +27,4 @@ jobs:
           action-token: ${{ secrets.GITHUB_TOKEN }}
           project-url: 'https://github.com/github/docs/projects/1'
           column-name: 'Triage'
+[![Triage new pull requests](https://github.com/ReyBan82/docs/actions/workflows/triage-pull-requests.yml/badge.svg?branch=main&event=branch_protection_rule)](https://github.com/ReyBan82/docs/actions/workflows/triage-pull-requests.yml)
