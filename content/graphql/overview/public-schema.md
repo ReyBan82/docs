@@ -5,6 +5,7 @@ redirect_from:
   - /v4/public_schema
 versions:
   fpt: '*'
+  ghec: '*'
   ghes: '*'
   ghae: '*'
 topics:
@@ -15,20 +16,20 @@ You can [perform introspection](/graphql/guides/introduction-to-graphql#discover
 
 Alternatively, you can download the latest version of the public schema here:
 
-{% ifversion fpt %}
+{% ifversion fpt or ghec %}
 
-[{% octicon "desktop-download" aria-label="The desktop download icon" %} `schema.docs.graphql`](/public/schema.docs.graphql)
+[{% octicon "desktop-download" aria-label="Download" %} `schema.docs.graphql`](/public/schema.docs.graphql)
 
 {% endif %}
 
 {% ifversion ghes %}
 
-[{% octicon "desktop-download" aria-label="The desktop download icon" %} `schema.docs-enterprise.graphql`](/public/ghes-{{ allVersions[currentVersion].currentRelease }}/schema.docs-enterprise.graphql) ({{ allVersions[currentVersion].versionTitle }})
+[{% octicon "desktop-download" aria-label="Download" %} `schema.docs-enterprise.graphql`](/public/ghes-{{ allVersions[currentVersion].currentRelease }}/schema.docs-enterprise.graphql) ({{ allVersions[currentVersion].versionTitle }})
 
 {% endif %}
 
 {% ifversion ghae %}
 
-[{% octicon "desktop-download" aria-label="The desktop download icon" %} `schema.docs-ghae.graphql`](/public/ghae/schema.docs-ghae.graphql) ({{ allVersions[currentVersion].versionTitle }})
+[{% octicon "desktop-download" aria-label="Download" %} `schema.docs-ghae.graphql`](/public/ghae/schema.docs-ghae.graphql) ({{ allVersions[currentVersion].versionTitle }})
 
 {% endif %}

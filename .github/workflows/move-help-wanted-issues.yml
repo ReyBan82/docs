@@ -9,14 +9,27 @@ on:
     types:
       - labeled
 
+permissions:
+  contents: read
+
 jobs:
   move_issues:
-    if: github.repository == 'github/docs' && (github.event.label.name == 'help wanted' || github.event.label.name == 'good first issue')
+    if: >-
+      ${{
+        github.repository == 'github/docs' &&
+        (github.event.label.name == 'help wanted' || github.event.label.name == 'good first issue')
+      }}
     runs-on: ubuntu-latest
-
     steps:
-      - uses: alex-page/github-project-automation-plus@fdb7991b72040d611e1123d2b75ff10eda9372c9
+      - uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
         with:
-          project: Docs team reviews
+          project: Docs open source board
           column: Help wanted
-          repo-token: ${{ secrets.DOCUBOT_READORG_REPO_WORKFLOW_SCOPES }}
+          repo-token: ${{ secrets.DOCS_BOT_PAT_WORKFLOW_READORG }}
+
+      - name: Check out repo
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
+      - uses: ./.github/actions/slack-alert
+        with:
+          slack_channel_id: ${{ secrets.DOCS_ALERTS_SLACK_CHANNEL_ID }}
+          slack_token: ${{ secrets.SLACK_DOCS_BOT_TOKEN }}
