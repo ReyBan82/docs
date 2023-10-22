@@ -8,6 +8,7 @@ versions:
   fpt: '*'
   ghes: '*'
   ghae: '*'
+  ghec: '*'
 topics:
   - GitHub search
 children:
@@ -23,4 +24,6 @@ children:
   - /searching-for-packages
   - /searching-wikis
   - /searching-in-forks
+  - /searching-gists
 ---
+

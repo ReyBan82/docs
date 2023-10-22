@@ -1,30 +1,54 @@
 import React from 'react'
 import cx from 'classnames'
+import { Box } from '@primer/react'
+import { SupportPortalVaIframe, SupportPortalVaIframeProps } from './SupportPortalVaIframe'
+
 import styles from './ArticleGridLayout.module.scss'
 
 type Props = {
-  head?: React.ReactNode
+  intro?: React.ReactNode
+  topper?: React.ReactNode
   toc?: React.ReactNode
   children?: React.ReactNode
   className?: string
+  supportPortalVaIframeProps?: SupportPortalVaIframeProps
 }
-export const ArticleGridLayout = ({ head, toc, children, className }: Props) => {
+export const ArticleGridLayout = ({
+  intro,
+  topper,
+  toc,
+  children,
+  className,
+  supportPortalVaIframeProps,
+}: Props) => {
   return (
-    <div className={cx(styles.container, className)}>
-      {/* head */}
-      {head && <div className={styles.head}>{head}</div>}
-
-      {/* toc */}
+    <Box className={cx(styles.containerBox, className)}>
+      {topper && <Box gridArea="topper">{topper}</Box>}
       {toc && (
-        <div className={cx(styles.sidebar, 'border-bottom border-xl-0 pb-4 mb-5 pb-xl-0 mb-xl-0')}>
-          <div className={styles.sidebarContent}>{toc}</div>
-        </div>
+        <Box
+          data-container="toc"
+          gridArea="sidebar"
+          alignSelf="flex-start"
+          className={cx(styles.sidebarBox, 'border-bottom border-lg-0 pb-4 mb-5 pb-xl-0 mb-xl-0')}
+        >
+          {toc}
+        </Box>
       )}
 
-      {/* content */}
-      <div data-search="article-body" className={styles.content}>
+      {intro && (
+        <Box id="article-intro" gridArea="intro">
+          {intro}
+        </Box>
+      )}
+
+      <Box data-container="article" gridArea="content" data-search="article-body">
+        {supportPortalVaIframeProps &&
+          supportPortalVaIframeProps.supportPortalUrl &&
+          supportPortalVaIframeProps.vaFlowUrlParameter && (
+            <SupportPortalVaIframe supportPortalVaIframeProps={supportPortalVaIframeProps} />
+          )}
         {children}
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

@@ -1,44 +1,36 @@
-@import "@primer/css/layout/index.scss";
-@import "@primer/css/support/variables/layout.scss";
-@import "@primer/css/marketing/support/variables.scss";
-
-.container {
+.containerBox {
   max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "topper"
+    "intro"
+    "sidebar"
+    "content";
 
-  @include breakpoint(xl) {
+  row-gap: 8px;
+
+  @media (min-width: 1012px) {
     max-width: none;
-    display: grid;
+    padding-top: 24px;
     grid-template-rows: auto 1fr;
     grid-template-columns: minmax(500px, 720px) minmax(220px, 1fr);
     grid-template-areas:
-      "top right-sidebar"
-      "bottom right-sidebar";
-    column-gap: $spacer-6;
-  }
-
-  @include breakpoint(xl) {
-    column-gap: $spacer-9;
+      "topper sidebar"
+      "intro sidebar"
+      "content sidebar";
+    column-gap: 80px;
+    row-gap: 0;
   }
 }
 
-.sidebar {
-  grid-area: right-sidebar;
-}
-
-.sidebarContent {
-  @include breakpoint(xl) {
+.sidebarBox {
+  @media (min-width: 1012px) {
     position: sticky;
-    top: $spacer-4;
-    max-height: calc(100vh - #{$spacer-4});
+    padding-top: 24px;
+    top: 5em;
+    max-height: calc(100vh - 5em);
     overflow-y: auto;
-    padding-bottom: $spacer-4;
+    padding-bottom: 40px !important;
   }
-}
-
-.head {
-  grid-area: top;
-}
-
-.content {
-  grid-area: bottom;
 }

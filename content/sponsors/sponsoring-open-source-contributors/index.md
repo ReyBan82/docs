@@ -7,11 +7,14 @@ redirect_from:
   - /github/supporting-the-open-source-community-with-github-sponsors/sponsoring-open-source-contributors
 versions:
   fpt: '*'
+  ghec: '*'
 children:
-  - /sponsoring-an-open-source-contributor
+  - /about-sponsorships-fees-and-taxes
+  - /sponsoring-an-open-source-contributor-through-github
+  - /sponsoring-an-open-source-contributor-through-patreon
   - /managing-your-sponsorship
   - /attributing-sponsorships-to-your-organization
   - /paying-for-github-sponsors-by-invoice
+  - /unlinking-your-patreon-account-from-your-github-account
 shortTitle: Sponsor contributors
 ---
-
